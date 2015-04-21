@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>New beer - The Beer Catalog</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Add a new beer to The Beer Catalog</h1>
+    <form action="#" th:action="@{/addBeer}" th:object="${beer}" method="post">
+        <table>
+            <tr>
+                <td>Name: </td>
+                <td><input type="text" th:field="*{name}" /></td>
+                <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Naming error</td>
+            </tr>
+            <tr>
+                <td>Brewery: </td> 
+                <td><select th:field="*{brewery}">
+                        <option th:each="brewery : ${breweryList}" 
+                                th:value="${brewery.id}" 
+                                th:text="${brewery.name} + ' (' + ${brewery.country} + ')'">
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Type of beer: </td>
+                <td><input type="text" th:field="*{type}" /></td>
+                <td th:if="${#fields.hasErrors('type')}" th:errors="*{type}">Type error</td>
+            </tr>
+            <tr>
+                <td>Alcohol content: </td>
+                <td><input type="text" th:field="*{alcoholContent}" /></td>
+                <td th:if="${#fields.hasErrors('alcoholContent')}" th:errors="*{alcoholContent}">Incorrect alcohol content</td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

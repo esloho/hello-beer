@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Detail brewery - The Beer Catalog</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Brewery details</h1>
+    <p th:text="'Name: ' + ${brewery.name}" />
+    <p th:text="'City: ' + ${brewery.city}" />
+    <p th:text="'Country: ' + ${brewery.country}" />
+    <p th:text="'Founded in year: ' + ${brewery.foundedYear}" />
+    <a th:href="@{/deleteBrewery(id=${brewery.id})}" >Delete</a>
+    <a href="/breweries">Go to the list of breweries</a>
+    <a href="/hellobeer">Go to the menu</a>
+</body>
+</html>
